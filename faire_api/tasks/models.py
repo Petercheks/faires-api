@@ -12,9 +12,10 @@ class Task(models.Model):
     
 class SubTask(models.Model):
     # Sub Task Model
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, related_name='sub_tasks', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()   
     done = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
